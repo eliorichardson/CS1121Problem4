@@ -43,8 +43,8 @@ public class HotDog {
                cost = cost + toppings[j].price; //append to price
             }
          }
-         System.out.println(output);
-         System.out.printf("%.2f\n", cost);
+         System.out.printf("%-150s $%.2f\n", output, cost);//use %(negative spaces)s to left align and pad for prices to show up on the right side
+         //System.out.printf("%.2f\n", cost);
       }
       return 128;
    }
