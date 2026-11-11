@@ -34,15 +34,18 @@ public class HotDog {
    public long printMenu() {
       // YOUR CODE HERE
       for (int i = 0; i<128; i++) { //128 from 2^7, 7 toppings
-         String output = i + " Dog in Bun";
+         String output = i + " Dog in Bun"; //only say with for dogs with condiments
          double cost = basePrice;
+         boolean firstTopping = false; //use boolean to keep track of if we appended a topping yet or not. makes it so commas arent in goofy places
 
          for(int j = 0; j < 7; j++) {  //7 toppings so 7 bits to check
             if ((i & (1 << j)) != 0) { //check each bit for existing, bits 0-6 correspond to toppings
-               output = output + " with " + toppings[j].printedName; //append to existing output string
+               output = output + (firstTopping ? ", " : " with ") + toppings[j].printedName; //append to existing output string
                cost = cost + toppings[j].price; //append to price
+               firstTopping = true;
             }
          }
+
          System.out.printf("%-150s $%.2f\n", output, cost);//use %(negative spaces)s to left align and pad for prices to show up on the right side
          //System.out.printf("%.2f\n", cost);
       }
